@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio & Konsultasi Web | Kezia Vania Pasaribu</title>
+  <title>Portofolio Kezia Vania Pasaribu | Business &amp; Data Analyst</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,44 +11,75 @@
   <header class="main-header">
     <div class="header-container">
       <div class="brand-logo">
-        <a href="#about">SI-Del<span>Portfolio</span></a>
+        <a href="#about"><span class="logo-sparkle">&#10022;</span> Kezia</a>
       </div>
       <nav class="main-nav" aria-label="Navigasi Utama">
         <ul class="nav-list">
           <li><a href="#about">Tentang</a></li>
-          <li><a href="#projects">Portofolio</a></li>
-          <li><a href="#academics">Pencapaian</a></li>
-          <li><a href="#services">Layanan</a></li>
+          <li><a href="#projects">Proyek</a></li>
+          <li><a href="#skills">Keahlian</a></li>
+          <li><a href="#academics">Prestasi</a></li>
+          <li><a href="#services">Kontak</a></li>
         </ul>
       </nav>
+      <div class="header-action">
+        <a href="#services" class="btn-nav-action">Hubungi Saya</a>
+      </div>
     </div>
   </header>
 
+  <section class="hero-section" id="about">
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-tag">PORTOFOLIO PROFESIONAL</span>
+        <h1 class="hero-title">Kezia Vania Pasaribu</h1>
+        <h2 class="hero-subtitle">Business Analyst &amp; Data Analyst</h2>
+        <p class="hero-desc">
+          Mahasiswa semester 5 dengan program studi sistem informasi di institut teknologi del.
+        </p>
+
+        <div class="edu-badge-card">
+          <div class="edu-icon">&#127891;</div>
+          <div class="edu-text">
+            <span class="edu-inst">Institut Teknologi Del</span>
+            <strong class="edu-major">S1 Sistem Informasi</strong>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-primary-pill">Lihat Proyek</a>
+          <a href="#services" class="btn-secondary-pill">Konsultasi Gratis</a>
+        </div>
+      </div>
+
+      <div class="hero-avatar-wrapper">
+        <div class="avatar-ring-outer">
+          <div class="avatar-ring-inner">
+            <img src="profile.jpg" alt="Foto Profil Kezia Vania Pasaribu" class="avatar-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="layout-wrapper">
     <main class="main-content">
-      
-      <section id="about" class="card-section">
-        <article class="intro-article">
-          <header class="section-heading">
-            <span class="badge">Profil Pengembang</span>
-            <h1>Kezia Vania Pasaribu</h1>
-            <p class="subtitle">Mahasiswa S1 Sistem Informasi — Institut Teknologi Del</p>
-          </header>
-          <p class="bio-text">
-            Fokus pada rekayasa antarmuka web modern, perancangan arsitektur sistem informasi berbasis pemodelan proses bisnis, serta implementasi antarmuka pengguna (UI/UX) yang ramah pengguna serta berstandar aksesibilitas WCAG 2.2 Level AA.
-          </p>
 
-          <div class="skills-box">
-            <h2>Keahlian &amp; Fokus Studi</h2>
-            <ul class="skills-chips">
-              <li>HTML5 Semantic</li>
-              <li>Modern CSS3 &amp; Flexbox</li>
-              <li>UI/UX Prototyping</li>
-              <li>BPMN &amp; DFD Modeling</li>
-              <li>Software Quality</li>
-            </ul>
-          </div>
-        </article>
+      <section id="skills" class="card-section">
+        <header class="section-heading">
+          <span class="badge">Kompetensi Inti</span>
+          <h2>Keahlian &amp; Fokus Analisis</h2>
+          <p class="subtitle">Kombinasi pemodelan sistem informasi, analisis data, dan antarmuka web</p>
+        </header>
+        <ul class="skills-chips">
+          <li>Business Process Modeling (BPMN)</li>
+          <li>Data Flow Diagram (DFD)</li>
+          <li>Data Analysis</li>
+          <li>HTML5 Semantic</li>
+          <li>Modern CSS3 &amp; Flexbox</li>
+          <li>UI/UX Prototyping Figma</li>
+          <li>Software Quality</li>
+        </ul>
       </section>
 
       <section id="projects" class="card-section">
@@ -153,7 +184,6 @@
         </header>
 
         <form class="accessible-form" action="#" method="POST">
-          
           <fieldset class="form-fieldset">
             <legend class="form-legend">1. Identitas Pemohon / Klien</legend>
 
@@ -188,10 +218,10 @@
               <label for="select-kategori" class="form-label">Kategori Layanan Utama <span class="req">*</span></label>
               <select id="select-kategori" name="kategori" class="form-input" required>
                 <option value="" disabled selected>-- Pilih Jenis Layanan --</option>
+                <option value="data">Analisis Data &amp; Visualisasi Informasi</option>
+                <option value="business">Pemodelan Proses Bisnis &amp; DFD Leveling</option>
                 <option value="frontend">Rekayasa Frontend Web (HTML/CSS/JS)</option>
-                <option value="bpmn">Pemodelan Proses Bisnis &amp; DFD Leveling</option>
                 <option value="uiux">Perancangan UI/UX &amp; Prototyping Figma</option>
-                <option value="qa">Audit Aksesibilitas Web &amp; Pengujian</option>
               </select>
             </div>
 
@@ -225,14 +255,13 @@
 
             <div class="form-group">
               <label for="text-deskripsi" class="form-label">Ruang Lingkup &amp; Deskripsi Masalah <span class="req">*</span></label>
-              <textarea id="text-deskripsi" name="deskripsi" class="form-input" rows="4" placeholder="Tuliskan spesifikasi kebutuhan sistem yang diinginkan..." required></textarea>
+              <textarea id="text-deskripsi" name="deskripsi" class="form-input" rows="4" placeholder="Tuliskan spesifikasi kebutuhan analisis atau sistem yang diinginkan..." required></textarea>
             </div>
           </fieldset>
 
           <button type="submit" class="btn-primary">Kirimkan Permintaan Kolaborasi</button>
         </form>
       </section>
-
     </main>
 
     <aside class="side-panel" aria-label="Informasi Tambahan">
