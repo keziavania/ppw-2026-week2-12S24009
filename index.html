@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio & Konsultasi Web | S1 Sistem Informasi IT Del</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header & Navigasi -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand-logo">
+        <a href="#hero">SI-Del<span>Portfolio</span></a>
+      </div>
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#projects">Portofolio</a></li>
+          <li><a href="#academics">Capaian</a></li>
+          <li><a href="#contact">Layanan</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout-wrapper">
+    <!-- Konten Inti -->
+    <main>
+      <!-- Section 1: Profil / Hero -->
+      <section id="about" class="card-section">
+        <article class="intro-article">
+          <header class="section-heading">
+            <span class="badge">Profil Pengembang</span>
+            <h1>Kezia Vania Pasaribu</h1>
+            <p class="subtitle">Mahasiswa S1 Sistem Informasi — Institut Teknologi Del</p>
+          </header>
+          <p>
+            Fokus pada rekayasa antarmuka web modern, perancangan sistem informasi, dan implementasi UI/UX yang ramah pengguna serta berstandar aksesibilitas WCAG 2.2 Level AA.
+          </p>
+          
+          <div class="skills-wrapper">
+            <h3>Keahlian & Fokus Studi</h3>
+            <ul class="tag-list">
+              <li>HTML5 Semantic</li>
+              <li>Modern CSS3 & Flexbox</li>
+              <li>UI/UX Prototyping</li>
+              <li>BPMN & DFD Modeling</li>
+              <li>Software Quality</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- Section 2: Portofolio Proyek & Capaian -->
+      <section id="projects" class="card-section">
+        <header class="section-heading">
+          <h2>Portofolio & Rekapitulasi Proyek</h2>
+          <p class="subtitle">Daftar rekayasa perangkat lunak dan sistem informasi yang dikerjakan</p>
+        </header>
+
+        <!-- Tabel Semantik Lengkap -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <caption>Rekapitulasi Capaian Matakuliah dan Proyek Aplikasi Web</caption>
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Nama Proyek / Topik</th>
+                <th scope="col">Peran</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Tobain Samosir Platform</td>
+                <td>UI/UX & Frontend</td>
+                <td>Aplikasi Pariwisata</td>
+                <td><span class="status-pill completed">Selesai</span></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Sistem Manajemen Kantin</td>
+                <td>Software Modeler</td>
+                <td>Sistem Informasi</td>
+                <td><span class="status-pill completed">Selesai</span></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Monitoring Kesehatan Anak & Stunting</td>
+                <td>Lead Analyst</td>
+                <td>Smart City</td>
+                <td><span class="status-pill in-progress">Aktif</span></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Web Portfolio & Form Accessible</td>
+                <td>Frontend Engineer</td>
+                <td>Praktikum PPW</td>
+                <td><span class="status-pill in-progress">Evaluasi</span></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">Total Portofolio Terdaftar</td>
+                <td><strong>4 Rekam Jejak</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="workflow-block">
+          <h3>Metodologi Pengerjaan Proyek</h3>
+          <ol class="ordered-steps">
+            <li>Analisis kebutuhan fungsional dan pemodelan proses bisnis (BPMN).</li>
+            <li>Perancangan arsitektur semantik dokumen web dan pengujian aksesibilitas.</li>
+            <li>Pengembangan komponen modular menggunakan HTML5 dan CSS Flexbox/Grid.</li>
+            <li>Deployment dan pengujian terdistribusi melalui GitHub Pages.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section 3: Formulir Layanan & Konsultasi Interaktif -->
+      <section id="contact" class="card-section">
+        <header class="section-heading">
+          <h2>Formulir Pemesanan Layanan Konsultasi</h2>
+          <p class="subtitle">Silakan isi formulir di bawah ini dengan lengkap untuk penjadwalan evaluasi</p>
+        </header>
+
+        <form action="#" method="POST" class="accessible-form">
+          <!-- Fieldset 1: Data Identitas Pemohon -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">Identitas Pemohon</legend>
+
+            <div class="form-group">
+              <label for="full-name" class="form-label">Nama Lengkap <span class="req">*</span></label>
+              <input type="text" id="full-name" name="fullName" class="form-control" placeholder="Contoh: Kezia Vania" required>
+            </div>
+
+            <div class="form-group">
+              <label for="user-email" class="form-label">Email Kampus (@del.ac.id) <span class="req">*</span></label>
+              <input type="email" id="user-email" name="userEmail" class="form-control" placeholder="nim@del.ac.id" required>
+              <small class="form-help">Wajib menggunakan domain kampus resmi IT Del.</small>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-half">
+                <label for="phone-number" class="form-label">Nomor Telepon/WhatsApp <span class="req">*</span></label>
+                <input type="tel" id="phone-number" name="phoneNumber" class="form-control" placeholder="08xxxxxxxxxx" required>
+              </div>
+
+              <div class="form-group col-half">
+                <label for="consult-hours" class="form-label">Estimasi Alokasi Sesi (Jam) <span class="req">*</span></label>
+                <input type="number" id="consult-hours" name="consultHours" class="form-control" min="1" max="8" value="1" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Fieldset 2: Spesifikasi Layanan Konsultasi -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">Spesifikasi Layanan & Proyek</legend>
+
+            <div class="form-group">
+              <label for="service-category" class="form-label">Pilihan Topik Layanan <span class="req">*</span></label>
+              <select id="service-category" name="serviceCategory" class="form-control" required>
+                <option value="">-- Pilih Topik Konsultasi --</option>
+                <option value="uiux">Perancangan UI/UX & Prototyping</option>
+                <option value="frontend">Audit Semantik HTML5 & CSS</option>
+                <option value="accessibility">Pemeriksaan Aksesibilitas WCAG</option>
+                <option value="system-modeling">Pemodelan Sistem (DFD / BPMN)</option>
+              </select>
+            </div>
+
+            <!-- Radio Buttons -->
+            <div class="form-group">
+              <span class="group-label">Format Pelaksanaan Sesi <span class="req">*</span></span>
+              <div class="radio-checkbox-group">
+                <label class="custom-radio">
+                  <input type="radio" name="formatMeeting" value="online" required checked>
+                  <span>Daring (Google Meet / Zoom)</span>
+                </label>
+                <label class="custom-radio">
+                  <input type="radio" name="formatMeeting" value="offline" required>
+                  <span>Luring (Ruang Diskusi Perpustakaan Del)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="project-notes" class="form-label">Deskripsi Kebutuhan & Catatan Proyek <span class="req">*</span></label>
+              <textarea id="project-notes" name="projectNotes" rows="4" class="form-control" placeholder="Jelaskan kebutuhan studi kasus atau evaluasi antarmuka yang diinginkan..." required></textarea>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="agreement" name="agreement" required>
+                <span>Saya menyatakan data yang diisi telah valid dan bersedia mematuhi norma akademik Del. <span class="req">*</span></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-submit">Kirim Pengajuan Konsultasi</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Komponen Pelengkap Semantik Aside -->
+    <aside class="sidebar-info" aria-label="Informasi Kampus & Kontak">
+      <section class="card-aside">
+        <h3>Lokasi Institusi</h3>
+        <p><strong>Institut Teknologi Del</strong></p>
+        <p>Fakultas Informatika & Teknik Elektro</p>
+        <p>S1 Sistem Informasi</p>
+        <p class="aside-address">Jl. Sisingamangaraja, Sitoluama, Laguboti, Toba Samosir, Sumatera Utara 22381</p>
+      </section>
+
+      <section class="card-aside">
+        <h3>Jadwal Lab PPW</h3>
+        <p><strong>Hari:</strong> Jadwal Perkuliahan Week 02</p>
+        <p><strong>Waktu:</strong> 170 Menit Terbimbing</p>
+        <p><strong>Dosen:</strong> Chandro Pardede, S.Kom., M.Sc.</p>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Footer Semantik -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <p>&copy; 2026 S1 Sistem Informasi Institut Teknologi Del. Disusun untuk Tugas Mandiri Mata Kuliah Pemrograman dan Pengujian Aplikasi Web (1253101).</p>
+      <p><small>Standar Kode: HTML5 Semantic, CSS3 Modular, WCAG 2.2 AA Accessible.</small></p>
+    </div>
+  </footer>
+
+</body>
+</html>
