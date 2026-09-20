@@ -18,7 +18,7 @@
           <li><a href="#about">Tentang</a></li>
           <li><a href="#identity">Identitas</a></li>
           <li><a href="#projects">Proyek</a></li>
-          <li><a href="#academics">Pengalaman</a></li>
+          <li><a href="#tab-section">Rekam Jejak</a></li>
           <li><a href="#services">Kontak</a></li>
         </ul>
       </nav>
@@ -191,48 +191,172 @@
     </div>
   </section>
 
+  <section class="tab-showcase-section" id="tab-section">
+    <div class="tab-container">
+      <input type="radio" name="tab-control" id="tab-keahlian" checked class="tab-radio">
+      <input type="radio" name="tab-control" id="tab-kepanitiaan" class="tab-radio">
+      <input type="radio" name="tab-control" id="tab-prestasi" class="tab-radio">
+
+      <nav class="tab-pill-bar" aria-label="Kategori Tab">
+        <label for="tab-keahlian" class="tab-label label-keahlian">Keahlian</label>
+        <label for="tab-kepanitiaan" class="tab-label label-kepanitiaan">Kepanitiaan</label>
+        <label for="tab-prestasi" class="tab-label label-prestasi">Prestasi</label>
+      </nav>
+
+      <div class="tab-content content-keahlian">
+        <div class="skills-card-grid">
+          <article class="top-pink-card">
+            <h3 class="card-group-title">Pemrograman</h3>
+            <ul class="pink-bullet-list">
+              <li>Java (OOP Concepts)</li>
+              <li>Bahasa C (System Calls)</li>
+              <li>Python Programming</li>
+              <li>Object-Oriented Design</li>
+            </ul>
+          </article>
+
+          <article class="top-pink-card">
+            <h3 class="card-group-title">Analisis Sistem</h3>
+            <ul class="pink-bullet-list">
+              <li>BPMN 2.0 Modeling</li>
+              <li>Entity Relationship (ERD)</li>
+              <li>Data Flow Diagram (DFD)</li>
+              <li>Business Process Analysis</li>
+            </ul>
+          </article>
+
+          <article class="top-pink-card">
+            <h3 class="card-group-title">UI/UX &amp; Desain</h3>
+            <ul class="pink-bullet-list">
+              <li>Figma Prototyping</li>
+              <li>Wireframing &amp; Sitemap</li>
+              <li>User Flow Design</li>
+              <li>Design System Basics</li>
+            </ul>
+          </article>
+
+          <article class="top-pink-card">
+            <h3 class="card-group-title">Tools &amp; Lainnya</h3>
+            <ul class="pink-bullet-list">
+              <li>Git &amp; GitHub Version Control</li>
+              <li>HTML5 Semantic &amp; CSS3</li>
+              <li>Database Relasional (SQL)</li>
+              <li>Quality &amp; Web Standards</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-content content-kepanitiaan">
+        <div class="three-col-grid">
+          <article class="top-pink-card">
+            <div class="card-top-row">
+              <h3 class="card-group-title">Majelis Permusyawaratan Himpunan (MPH)</h3>
+              <span class="year-badge">2025/2026</span>
+            </div>
+            <p class="role-text-highlight">Anggota Dewan</p>
+            <p class="card-desc-body">
+              Menjalankan fungsi pengawasan, legislasi, penyerapan aspirasi, dan evaluasi program kerja organisasi himpunan mahasiswa.
+            </p>
+            <div class="card-bottom-info">
+              <span class="pin-icon">&#128204;</span> Himpunan Mahasiswa Sistem Informasi IT Del
+            </div>
+          </article>
+
+          <article class="top-pink-card">
+            <div class="card-top-row">
+              <h3 class="card-group-title">Kaderisasi Angkatan 2025</h3>
+              <span class="year-badge">2025</span>
+            </div>
+            <p class="role-text-highlight">Sekretaris</p>
+            <p class="card-desc-body">
+              Bertanggung jawab penuh atas administrasi persuratan, notulensi rapat, dan sinkronisasi logistik pembinaan mahasiswa baru.
+            </p>
+            <div class="card-bottom-info">
+              <span class="pin-icon">&#128204;</span> Institut Teknologi Del
+            </div>
+          </article>
+
+          <article class="top-pink-card">
+            <div class="card-top-row">
+              <h3 class="card-group-title">Inagurasi &amp; Graduation 2025/2026</h3>
+              <span class="year-badge">2025</span>
+            </div>
+            <p class="role-text-highlight">Anggota Divisi Bagian Umum</p>
+            <p class="card-desc-body">
+              Mengelola kebutuhan logistik, tata kelola fasilitas panggung, dan operasional teknis kelancaran perayaan wisuda kampus.
+            </p>
+            <div class="card-bottom-info">
+              <span class="pin-icon">&#128204;</span> Panitia Wisuda &amp; Inagurasi IT Del
+            </div>
+          </article>
+
+          <article class="top-pink-card">
+            <div class="card-top-row">
+              <h3 class="card-group-title">Event Welcoming Party 2025</h3>
+              <span class="year-badge">2025</span>
+            </div>
+            <p class="role-text-highlight">Anggota Divisi Dokumentasi</p>
+            <p class="card-desc-body">
+              Mengabadikan visual kegiatan, mengelola aset dokumentasi fotografi/videografi, serta publikasi sambutan angkatan baru.
+            </p>
+            <div class="card-bottom-info">
+              <span class="pin-icon">&#128204;</span> Welcoming Party IT Del
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-content content-prestasi">
+        <div class="three-col-grid">
+          <article class="top-pink-card">
+            <div class="achievement-icon-title">
+              <span class="award-icon">&#127941;</span>
+              <h3 class="card-group-title">Best Research Essai Nasional</h3>
+            </div>
+            <p class="card-desc-body">
+              Meraih predikat karya riset esai terbaik tingkat nasional pada kategori eksplorasi teknologi kecerdasan buatan (Artificial Intelligence).
+            </p>
+            <div class="achievement-footer-meta">
+              <span class="badge-scope">Nasional</span>
+              <span class="award-year-source">2025 &bull; Kompetisi Ilmiah Nasional</span>
+            </div>
+          </article>
+
+          <article class="top-pink-card">
+            <div class="achievement-icon-title">
+              <span class="award-icon">&#127942;</span>
+              <h3 class="card-group-title">Peserta Pagelaran Gemastik</h3>
+            </div>
+            <p class="card-desc-body">
+              Berkompetisi dalam ajang Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan Komunikasi divisi Kota Cerdas (Smart City).
+            </p>
+            <div class="achievement-footer-meta">
+              <span class="badge-scope">Nasional</span>
+              <span class="award-year-source">2025 &bull; Puspresnas &amp; Kemendikbudristek</span>
+            </div>
+          </article>
+
+          <article class="top-pink-card">
+            <div class="achievement-icon-title">
+              <span class="award-icon">&#128196;</span>
+              <h3 class="card-group-title">Peserta PKM Gagasan Futuristik</h3>
+            </div>
+            <p class="card-desc-body">
+              Menyusun proposal inovasi gagasan futuristik tertulis dalam Program Kreativitas Mahasiswa (PKM) tingkat nasional.
+            </p>
+            <div class="achievement-footer-meta">
+              <span class="badge-scope">Nasional</span>
+              <span class="award-year-source">2025 &bull; Kemendikbudristek RI</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="layout-wrapper">
     <main class="main-content">
-
-      <section id="academics" class="card-section">
-        <header class="section-heading">
-          <span class="badge">Rekam Jejak</span>
-          <h2>Prestasi &amp; Pengalaman Kepanitiaan</h2>
-          <p class="subtitle">Rekapitulasi pencapaian kompetisi nasional serta keterlibatan organisasi dan kepanitiaan</p>
-        </header>
-
-        <ol class="flow-list">
-          <li>
-            <strong>Best Research Essai Kategori Artificial Intelligence Nasional:</strong>
-            Meraih predikat karya riset esai terbaik tingkat nasional dengan topik implementasi kecerdasan buatan.
-          </li>
-          <li>
-            <strong>Peserta Pagelaran Gemastik Tahun 2025 (Kategori Smart City):</strong>
-            Berkompetisi pada divisi kota cerdas tingkat mahasiswa nasional.
-          </li>
-          <li>
-            <strong>Peserta Program Kreativitas Mahasiswa (PKM) Tahun 2025 (Kategori Gagasan Futuristik):</strong>
-            Menyusun proposal inovasi gagasan futuristik tertulis dalam skema kompetisi nasional.
-          </li>
-          <li>
-            <strong>Anggota Majelis Permusyawaratan Himpunan (MPH) Periode 2025/2026:</strong>
-            Menjalankan fungsi pengawasan, legislasi, dan evaluasi arah program kerja himpunan mahasiswa.
-          </li>
-          <li>
-            <strong>Sekretaris Kaderisasi Angkatan 2025:</strong>
-            Mengelola sistem administrasi, persuratan, dan sinkronisasi alur kegiatan kaderisasi mahasiswa angkatan.
-          </li>
-          <li>
-            <strong>Anggota Divisi Bagian Umum &mdash; Event Inagurasi &amp; Graduation 2025/2026:</strong>
-            Bertanggung jawab terhadap tata kelola perlengkapan teknis dan logistik pelaksanaan wisuda serta inagurasi.
-          </li>
-          <li>
-            <strong>Anggota Divisi Dokumentasi &mdash; Welcoming Party 2025:</strong>
-            Mengelola peliputan visual, produksi konten media, dan pengarsipan kegiatan penyambutan mahasiswa.
-          </li>
-        </ol>
-      </section>
-
       <section id="services" class="card-section">
         <header class="section-heading">
           <span class="badge">Interaksi Pengguna</span>
