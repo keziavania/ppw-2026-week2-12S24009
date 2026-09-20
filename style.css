@@ -104,8 +104,8 @@ body {
 
 .hero-section {
   max-width: 1200px;
-  margin: 40px auto 20px;
-  padding: 40px 32px;
+  margin: 40px auto 10px;
+  padding: 40px 32px 20px;
 }
 
 .hero-container {
@@ -257,6 +257,115 @@ body {
   border-radius: 50%;
   object-fit: cover;
   display: block;
+}
+
+.identity-section {
+  max-width: 1200px;
+  margin: 30px auto 40px;
+  padding: 0 32px;
+}
+
+.identity-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.identity-subtag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-pink-primary);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.identity-main-title {
+  font-family: "Playfair Display", "Times New Roman", Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.identity-divider {
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-pink-primary);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 28px;
+}
+
+.identity-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 14px rgba(217, 70, 118, 0.04);
+}
+
+.card-headline {
+  font-family: "Playfair Display", "Times New Roman", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.card-paragraph {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.academic-dl {
+  display: flex;
+  flex-direction: column;
+}
+
+.dl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f5eaee;
+  font-size: 0.95rem;
+}
+
+.dl-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dl-row dt {
+  color: var(--text-muted);
+  font-weight: 500;
+  width: 35%;
+}
+
+.dl-row dd {
+  color: #111827;
+  font-weight: 600;
+  width: 65%;
+  text-align: left;
+}
+
+.academic-link {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.academic-link:hover {
+  color: var(--accent-pink-primary);
+  text-decoration: underline;
 }
 
 .layout-wrapper {
@@ -624,6 +733,20 @@ h2 {
 
   .hero-buttons {
     justify-content: center;
+  }
+
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dl-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .dl-row dt, .dl-row dd {
+    width: 100%;
   }
 
   .layout-wrapper {
