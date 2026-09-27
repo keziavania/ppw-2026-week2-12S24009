@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kezia Vania | Business &amp; Data Analyst</title>
 
-  <!-- Bootstrap 5.3.3 CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Custom Style Overrides -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Responsive Navbar dengan Collapse Hamburger -->
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-custom py-3" aria-label="Navigasi Utama">
       <div class="container">
@@ -40,7 +36,6 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero-section py-5" id="about">
     <div class="container py-lg-4">
       <div class="row align-items-center g-5">
@@ -77,7 +72,6 @@
     </div>
   </section>
 
-  <!-- Identitas Akademik Grid -->
   <section class="identity-section py-5" id="identity">
     <div class="container">
       <div class="text-center mb-5">
@@ -131,7 +125,6 @@
     </div>
   </section>
 
-  <!-- Rekap Capaian Proyek: 12-Column Responsive Card Grid dengan Trigger Modal -->
   <section class="rekap-section py-5" id="projects">
     <div class="container">
       <div class="text-center mb-5">
@@ -141,7 +134,6 @@
       </div>
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
-        <!-- Project 1 -->
         <div class="col">
           <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -157,13 +149,12 @@
               <span class="tech-pill">OOP</span>
               <span class="tech-pill">Inheritance</span>
             </div>
-            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject1">
+            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject1" aria-haspopup="dialog">
               <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
             </button>
           </div>
         </div>
 
-        <!-- Project 2 -->
         <div class="col">
           <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -179,13 +170,12 @@
               <span class="tech-pill">Figma</span>
               <span class="tech-pill">Business Model</span>
             </div>
-            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject2">
+            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject2" aria-haspopup="dialog">
               <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
             </button>
           </div>
         </div>
 
-        <!-- Project 3 -->
         <div class="col">
           <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -201,13 +191,12 @@
               <span class="tech-pill">User Flow</span>
               <span class="tech-pill">Wireframing</span>
             </div>
-            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject3">
+            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject3" aria-haspopup="dialog">
               <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
             </button>
           </div>
         </div>
 
-        <!-- Project 4 -->
         <div class="col">
           <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -223,7 +212,7 @@
               <span class="tech-pill">SRS</span>
               <span class="tech-pill">System Analysis</span>
             </div>
-            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject4">
+            <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject4" aria-haspopup="dialog">
               <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
             </button>
           </div>
@@ -232,7 +221,6 @@
     </div>
   </section>
 
-  <!-- Bootstrap Modals Detail Proyek -->
   <div class="modal fade" id="modalProject1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
@@ -330,7 +318,6 @@
     </div>
   </div>
 
-  <!-- Tab Section (Rekam Jejak) -->
   <section class="tab-showcase-section py-5" id="tab-section">
     <div class="container">
       <div class="tab-container mx-auto">
@@ -511,7 +498,6 @@
     </div>
   </section>
 
-  <!-- Modernisasi Formulir Layanan (Bootstrap Floating Labels + Input Groups + Validation Feedback) -->
   <section class="py-5" id="services">
     <div class="container">
       <div class="row g-4 align-items-start">
@@ -525,7 +511,6 @@
               <fieldset class="border rounded-4 p-4 mb-4">
                 <legend class="float-none w-auto px-2 fs-6 fw-bold text-pink">1. Identitas Pemohon / Klien</legend>
                 
-                <!-- Floating Label Teks -->
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control rounded-3" id="namaKlien" placeholder="Kezia Vania" required>
                   <label for="namaKlien"><i class="bi bi-person me-1"></i> Nama Lengkap *</label>
@@ -533,7 +518,6 @@
                   <div class="invalid-feedback">Nama lengkap wajib disertakan.</div>
                 </div>
 
-                <!-- Floating Label Email -->
                 <div class="form-floating mb-3">
                   <input type="email" class="form-control rounded-3" id="emailKlien" placeholder="nama@domain.com" required>
                   <label for="emailKlien"><i class="bi bi-envelope me-1"></i> Alamat Email Resmi *</label>
@@ -542,7 +526,6 @@
                 </div>
 
                 <div class="row g-3">
-                  <!-- Input Group Telepon -->
                   <div class="col-md-7">
                     <label class="form-label small fw-semibold">Nomor WhatsApp *</label>
                     <div class="input-group">
@@ -552,7 +535,6 @@
                     </div>
                   </div>
 
-                  <!-- Floating Label Durasi -->
                   <div class="col-md-5">
                     <label class="form-label small fw-semibold">Estimasi (Pekan) *</label>
                     <div class="input-group">
@@ -566,7 +548,6 @@
               <fieldset class="border rounded-4 p-4 mb-4">
                 <legend class="float-none w-auto px-2 fs-6 fw-bold text-pink">2. Rincian Layanan &amp; Kebutuhan</legend>
 
-                <!-- Select Category -->
                 <div class="form-floating mb-3">
                   <select class="form-select rounded-3" id="kategoriLayanan" required>
                     <option value="" disabled selected>Pilih salah satu layanan</option>
@@ -579,14 +560,12 @@
                   <div class="invalid-feedback">Pilih salah satu kategori layanan.</div>
                 </div>
 
-                <!-- Floating Label Textarea Deskripsi -->
                 <div class="form-floating mb-3">
                   <textarea class="form-control rounded-3" placeholder="Deskripsi proyek" id="deskripsiProyek" style="height: 120px" required></textarea>
                   <label for="deskripsiProyek"><i class="bi bi-pencil-square me-1"></i> Ruang Lingkup &amp; Deskripsi Kebutuhan *</label>
                   <div class="invalid-feedback">Rincian kebutuhan sistem wajib dijelaskan.</div>
                 </div>
 
-                <!-- Checkbox Syarat & Ketentuan -->
                 <div class="form-check my-3">
                   <input class="form-check-input" type="checkbox" id="checkTerms" required>
                   <label class="form-check-label small text-muted" for="checkTerms">
@@ -603,7 +582,6 @@
           </div>
         </main>
 
-        <!-- Sidebar Info -->
         <aside class="col-lg-4 d-flex flex-column gap-4">
           <div class="custom-card p-4">
             <h4 class="fs-6 fw-bold text-pink border-bottom pb-2 mb-3">Lokasi Institusi</h4>
@@ -625,7 +603,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="py-4 mt-5 bg-white border-top text-center">
     <div class="container">
       <p class="text-muted small mb-1">&copy; 2026 Kezia Vania Pasaribu (NIM: 12S24009). Praktikum Pemrograman dan Pengujian Web IT Del.</p>
@@ -633,10 +610,8 @@
     </div>
   </footer>
 
-  <!-- Bootstrap 5.3.3 JS Bundle CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-  <!-- Client-side Validation Script -->
   <script>
     (() => {
       'use strict'
