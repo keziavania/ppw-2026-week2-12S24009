@@ -313,3 +313,12 @@ body {
   border-radius: 50%;
   background-color: #198754;
 }
+
+.modal-content {
+  border: 1px solid rgba(217, 70, 118, 0.2);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-pink-primary);
+  outline-offset: 2px;
+}
