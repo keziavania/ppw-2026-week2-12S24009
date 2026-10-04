@@ -13,6 +13,10 @@ const App = {
       loading: document.getElementById('projectLoading'),
       error: document.getElementById('projectError'),
       empty: document.getElementById('projectEmpty'),
+      modal: document.getElementById('universalProjectModal'),
+      modalTitle: document.getElementById('projectModalTitle'),
+      modalBody: document.getElementById('projectModalBody'),
+      modalLink: document.getElementById('projectModalLink'),
     };
 
     this.els.filters.addEventListener('click', (e) => {
@@ -21,6 +25,12 @@ const App = {
       this.state.activeCategory = btn.dataset.category;
       this.renderFilters();
       this.renderProjects();
+    });
+
+    this.els.grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-project-id]');
+      if (!btn) return;
+      this.openProjectModal(btn.dataset.projectId);
     });
 
     this.loadProjects();
@@ -95,6 +105,31 @@ const App = {
           </button>
         </div>
       </div>`;
+  },
+
+  openProjectModal(projectId) {
+    const p = this.state.projects.find((item) => String(item.id) === String(projectId));
+    if (!p) return;
+
+    const e = (v) => this.escapeHTML(v);
+    const metrics = p.metrics
+      .map((m) => `<li><i class="bi bi-check2-circle text-pink me-2"></i><strong>${e(m.label)}:</strong> ${e(m.value)}</li>`)
+      .join('');
+    const tags = p.tags.map((t) => `<span class="tech-pill">${e(t)}</span>`).join('');
+
+    this.els.modalTitle.textContent = p.title;
+    this.els.modalBody.innerHTML = `
+      <img src="${e(p.thumbnail)}" class="img-fluid rounded-3 mb-3 w-100" alt="Tampilan proyek ${e(p.title)}">
+      <p class="text-muted small mb-3">${e(p.description)}</p>
+      <p class="small mb-2"><strong>Peran:</strong> <span class="text-muted">${e(p.role)}</span></p>
+      <ul class="list-unstyled small text-muted mb-3">${metrics}</ul>
+      <div>${tags}</div>`;
+
+    const isRealLink = /^https?:\/\//i.test(p.link);
+    this.els.modalLink.classList.toggle('d-none', !isRealLink);
+    if (isRealLink) this.els.modalLink.setAttribute('href', p.link);
+
+    bootstrap.Modal.getOrCreateInstance(this.els.modal).show();
   },
 };
 
