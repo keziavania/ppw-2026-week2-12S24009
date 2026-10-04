@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "title": "Classroom Booking System",
+    "category": "PBO",
+    "year": 2025,
+    "status": "Selesai",
+    "summary": "Sistem reservasi ruang kelas berbasis pemrograman berorientasi objek yang menangani penjadwalan serta alokasi fasilitas kampus.",
+    "description": "Dikembangkan untuk memenuhi penugasan praktikum Pemrograman Berorientasi Objek. Mengimplementasikan enkapsulasi, hierarki pewarisan kelas (inheritance), dan polimorfisme dalam penanganan konflik jadwal reservasi kelas.",
+    "role": "OOP Developer & Logic Architect",
+    "tags": ["Java", "OOP", "Inheritance"],
+    "metrics": [
+      { "label": "Bahasa", "value": "Java 17" },
+      { "label": "Konsep OOP", "value": "Enkapsulasi, Inheritance, Polimorfisme" },
+      { "label": "Output", "value": "Console Engine & Booking Management" }
+    ],
+    "thumbnail": "https://placehold.co/800x450/fdf2f4/d94676?text=Classroom+Booking",
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "title": "Tobain Samosir",
+    "category": "Kewirausahaan",
+    "year": 2025,
+    "status": "Selesai",
+    "summary": "Platform layanan biro wisata dan pemandu lokal di kawasan Danau Toba & Samosir dengan perancangan proses bisnis terintegrasi.",
+    "description": "Riset kewirausahaan teknologi untuk memberdayakan pemandu wisata lokal di Samosir. Mencakup pemodelan alur BPMN, wireframe antarmuka, hingga analisis alur pemesanan paket wisata turis domestik dan mancanegara.",
+    "role": "Business Analyst & Interface Designer",
+    "tags": ["BPMN", "Figma", "Business Model"],
+    "metrics": [
+      { "label": "Metodologi", "value": "BPMN 2.0 & Business Process Design" },
+      { "label": "Tools", "value": "Figma" }
+    ],
+    "thumbnail": "https://placehold.co/800x450/fdf2f4/d94676?text=Tobain+Samosir",
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "title": "Buku Digital Kesehatan Bayi & Bunda",
+    "category": "UI/UX Design",
+    "year": 2025,
+    "status": "Selesai",
+    "summary": "Perancangan prototipe aplikasi pencatatan gizi, jadwal imunisasi, dan pemantauan perkembangan kesehatan balita secara inklusif.",
+    "description": "Solusi digital pengganti buku KIA konvensional. Mengutamakan kenyamanan membaca bagi ibu hamil dan menyusui melalui hierarki tipografi yang jelas, palet warna lembut, serta tata letak form grafik berat badan balita.",
+    "role": "UI/UX Designer & User Journey Researcher",
+    "tags": ["Figma", "User Flow", "Wireframing"],
+    "metrics": [
+      { "label": "Tools", "value": "Figma & FigJam" },
+      { "label": "Fokus", "value": "UI/UX & Aksesibilitas" }
+    ],
+    "thumbnail": "https://placehold.co/800x450/fdf2f4/d94676?text=Buku+Digital+Bayi",
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "title": "Sistem Pemesanan Kantin Lama",
+    "category": "APSI",
+    "year": 2025,
+    "status": "Selesai",
+    "summary": "Analisis perancangan alur pemesanan makanan, validasi antrean, dan rekapitulasi transaksi berbasis DFD serta dokumen spesifikasi SRS.",
+    "description": "Merancang dekomposisi fungsional sistem informasi kantin dari Diagram Konteks, DFD Level 1 hingga Level 2, serta menyusun Dokumen Spesifikasi Kebutuhan Perangkat Lunak (SRS).",
+    "role": "System Analyst & Modeler",
+    "tags": ["DFD Leveling", "SRS", "System Analysis"],
+    "metrics": [
+      { "label": "Cakupan", "value": "DFD Level 0-2 & Data Dictionary" },
+      { "label": "Dokumen", "value": "SRS" }
+    ],
+    "thumbnail": "https://placehold.co/800x450/fdf2f4/d94676?text=Sistem+Kantin",
+    "link": "#"
+  }
+]

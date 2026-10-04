@@ -1,0 +1,25 @@
+{
+  "name": "Kezia Vania Pasaribu",
+  "nim": "12S24009",
+  "headline": "Business Analyst & Data Analyst",
+  "tagline": "PORTOFOLIO PROFESIONAL",
+  "bio": "Mahasiswa semester 5 dengan program studi sistem informasi di institut teknologi del.",
+  "about": "Mahasiswa tingkat 3 di semester 5 yang berfokus pada pengembangan web dan desain antarmuka. Tertarik dalam pemodelan alur proses bisnis, analisis data terstruktur, serta perancangan sistem informasi yang fungsional, inklusif, dan ramah pengguna berstandar aksesibilitas tinggi.",
+  "photo": "profile.jpg",
+  "academic": {
+    "university": "Institut Teknologi Del",
+    "faculty": "Fakultas Informatika dan Teknik Elektro",
+    "major": "S1 Sistem Informasi",
+    "activeYears": "2024 – Sekarang"
+  },
+  "contact": {
+    "email": "kejiavania@gmail.com",
+    "location": "Medan, Sumatera Utara"
+  },
+  "stats": [
+    { "label": "Proyek Portofolio", "value": 4 },
+    { "label": "Kepanitiaan", "value": 4 },
+    { "label": "Prestasi", "value": 3 },
+    { "label": "Layanan Ditawarkan", "value": 4 }
+  ]
+}
