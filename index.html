@@ -133,185 +133,36 @@
           <div class="pink-divider mx-auto"></div>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
-          <div class="col">
-            <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="badge bg-pink-soft text-pink px-3 py-2 rounded-pill fw-semibold">PBO &bull; 2025</span>
-                <span class="badge bg-light text-muted border px-2 py-1"><i class="bi bi-check-circle-fill text-success me-1"></i>Selesai</span>
-              </div>
-              <h3 class="card-title fw-bold mb-2">Classroom Booking System</h3>
-              <p class="text-muted flex-grow-1 small">
-                Sistem reservasi ruang kelas berbasis pemrograman berorientasi objek yang menangani penjadwalan serta alokasi fasilitas kampus.
-              </p>
-              <div class="mb-3">
-                <span class="tech-pill">Java</span>
-                <span class="tech-pill">OOP</span>
-                <span class="tech-pill">Inheritance</span>
-              </div>
-              <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject1" aria-haspopup="dialog">
-                <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
-              </button>
-            </div>
-          </div>
+        <div id="projectFilters" class="d-flex flex-wrap justify-content-center gap-2 mb-4"></div>
 
-          <div class="col">
-            <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="badge bg-pink-soft text-pink px-3 py-2 rounded-pill fw-semibold">Kewirausahaan &bull; 2025</span>
-                <span class="badge bg-light text-muted border px-2 py-1"><i class="bi bi-check-circle-fill text-success me-1"></i>Selesai</span>
-              </div>
-              <h3 class="card-title fw-bold mb-2">Tobain Samosir</h3>
-              <p class="text-muted flex-grow-1 small">
-                Platform layanan biro wisata dan pemandu lokal di kawasan Danau Toba &amp; Samosir dengan perancangan proses bisnis terintegrasi.
-              </p>
-              <div class="mb-3">
-                <span class="tech-pill">BPMN</span>
-                <span class="tech-pill">Figma</span>
-                <span class="tech-pill">Business Model</span>
-              </div>
-              <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject2" aria-haspopup="dialog">
-                <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
-              </button>
-            </div>
+        <div id="projectLoading" class="text-center py-5">
+          <div class="spinner-border text-pink" role="status">
+            <span class="visually-hidden">Memuat proyek...</span>
           </div>
-
-          <div class="col">
-            <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="badge bg-pink-soft text-pink px-3 py-2 rounded-pill fw-semibold">UI/UX Design &bull; 2025</span>
-                <span class="badge bg-light text-muted border px-2 py-1"><i class="bi bi-check-circle-fill text-success me-1"></i>Selesai</span>
-              </div>
-              <h3 class="card-title fw-bold mb-2">Buku Digital Kesehatan Bayi &amp; Bunda</h3>
-              <p class="text-muted flex-grow-1 small">
-                Perancangan prototipe aplikasi pencatatan gizi, jadwal imunisasi, dan pemantauan perkembangan kesehatan balita secara inklusif.
-              </p>
-              <div class="mb-3">
-                <span class="tech-pill">Figma</span>
-                <span class="tech-pill">User Flow</span>
-                <span class="tech-pill">Wireframing</span>
-              </div>
-              <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject3" aria-haspopup="dialog">
-                <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
-              </button>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 project-card border-0 shadow-sm p-4 rounded-4">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="badge bg-pink-soft text-pink px-3 py-2 rounded-pill fw-semibold">APSI &bull; 2025</span>
-                <span class="badge bg-light text-muted border px-2 py-1"><i class="bi bi-check-circle-fill text-success me-1"></i>Selesai</span>
-              </div>
-              <h3 class="card-title fw-bold mb-2">Sistem Pemesanan Kantin Lama</h3>
-              <p class="text-muted flex-grow-1 small">
-                Analisis perancangan alur pemesanan makanan, validasi antrean, dan rekapitulasi transaksi berbasis DFD serta dokumen spesifikasi SRS.
-              </p>
-              <div class="mb-3">
-                <span class="tech-pill">DFD Leveling</span>
-                <span class="tech-pill">SRS</span>
-                <span class="tech-pill">System Analysis</span>
-              </div>
-              <button class="btn btn-outline-pink w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProject4" aria-haspopup="dialog">
-                <i class="bi bi-info-circle me-1"></i> Lihat Rincian Proyek
-              </button>
-            </div>
-          </div>
+          <p class="text-muted small mt-3 mb-0">Memuat data proyek...</p>
         </div>
+
+        <div id="projectError" class="alert alert-danger d-none" role="alert"></div>
+
+        <div id="projectEmpty" class="text-center text-muted py-5 d-none">
+          <i class="bi bi-inbox fs-1"></i>
+          <p class="mt-2 mb-0">Tidak ada proyek pada kategori ini.</p>
+        </div>
+
+        <div id="projectGrid" class="row row-cols-1 row-cols-md-2 g-4"></div>
       </div>
     </section>
 
-    <div class="modal fade" id="modalProject1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="universalProjectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">
           <div class="modal-header border-bottom-0 pb-0">
-            <h4 class="modal-title fw-bold text-pink" id="modalLabel1">Classroom Booking System</h4>
+            <h4 class="modal-title fw-bold text-pink" id="projectModalTitle">Judul Proyek</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
           </div>
-          <div class="modal-body py-4">
-            <h6 class="fw-semibold">Deskripsi &amp; Arsitektur:</h6>
-            <p class="text-muted small mb-3">
-              Dikembangkan untuk memenuhi penugasan praktikum Pemrograman Berorientasi Objek. Mengimplementasikan enkapsulasi, hierarki pewarisan kelas (*inheritance*), dan polimorfisme dalam penanganan konflik jadwal reservasi kelas.
-            </p>
-            <ul class="list-unstyled small text-muted mb-0">
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Bahasa: Java 17 / OOP</li>
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Peran: OOP Developer &amp; Logic Architect</li>
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Output: Console Engine &amp; Booking Management</li>
-            </ul>
-          </div>
+          <div class="modal-body py-4" id="projectModalBody"></div>
           <div class="modal-footer border-top-0 pt-0">
-            <button type="button" class="btn btn-secondary rounded-pill btn-sm" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalProject2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 border-0 shadow">
-          <div class="modal-header border-bottom-0 pb-0">
-            <h4 class="modal-title fw-bold text-pink" id="modalLabel2">Tobain Samosir Platform</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body py-4">
-            <h6 class="fw-semibold">Analisis Proses Bisnis:</h6>
-            <p class="text-muted small mb-3">
-              Riset kewirausahaan teknologi untuk memberdayakan pemandu wisata lokal di Samosir. Mencakup pemodelan alur BPMN, wireframe antarmuka, hingga analisis alur pemesanan paket wisata turis domestik dan mancanegara.
-            </p>
-            <ul class="list-unstyled small text-muted mb-0">
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Metodologi: BPMN 2.0 &amp; Business Process Design</li>
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Peran: Business Analyst &amp; Interface Designer</li>
-            </ul>
-          </div>
-          <div class="modal-footer border-top-0 pt-0">
-            <button type="button" class="btn btn-secondary rounded-pill btn-sm" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalProject3" tabindex="-1" aria-labelledby="modalLabel3" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 border-0 shadow">
-          <div class="modal-header border-bottom-0 pb-0">
-            <h4 class="modal-title fw-bold text-pink" id="modalLabel3">Buku Digital Kesehatan Bayi &amp; Bunda</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body py-4">
-            <h6 class="fw-semibold">Fokus UI/UX &amp; Aksesibilitas:</h6>
-            <p class="text-muted small mb-3">
-              Solusi digital pengganti buku KIA konvensional. Mengutamakan kenyamanan membaca bagi ibu hamil dan menyusui melalui hierarki tipografi yang jelas, palet warna lembut, serta tata letak form grafik berat badan balita.
-            </p>
-            <ul class="list-unstyled small text-muted mb-0">
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Tools: Figma &amp; FigJam</li>
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Peran: UI/UX Designer &amp; User Journey Researcher</li>
-            </ul>
-          </div>
-          <div class="modal-footer border-top-0 pt-0">
-            <button type="button" class="btn btn-secondary rounded-pill btn-sm" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalProject4" tabindex="-1" aria-labelledby="modalLabel4" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 border-0 shadow">
-          <div class="modal-header border-bottom-0 pb-0">
-            <h4 class="modal-title fw-bold text-pink" id="modalLabel4">Sistem Pemesanan Kantin Lama</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body py-4">
-            <h6 class="fw-semibold">Pemodelan Sistem &amp; DFD:</h6>
-            <p class="text-muted small mb-3">
-              Merancang dekomposisi fungsional sistem informasi kantin dari Diagram Konteks, DFD Level 1 hingga Level 2, serta menyusun Dokumen Spesifikasi Kebutuhan Perangkat Lunak (SRS).
-            </p>
-            <ul class="list-unstyled small text-muted mb-0">
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Cakupan: DFD Level 0-2 &amp; Data Dictionary</li>
-              <li><i class="bi bi-check2-circle text-pink me-2"></i>Peran: System Analyst &amp; Modeler</li>
-            </ul>
-          </div>
-          <div class="modal-footer border-top-0 pt-0">
+            <a id="projectModalLink" href="#" target="_blank" rel="noopener" class="btn btn-outline-pink rounded-pill btn-sm">Lihat Proyek</a>
             <button type="button" class="btn btn-secondary rounded-pill btn-sm" data-bs-dismiss="modal">Tutup</button>
           </div>
         </div>
@@ -611,6 +462,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="js/api-service.js"></script>
+    <script src="js/app.js"></script>
 
     <script>
       (() => {
