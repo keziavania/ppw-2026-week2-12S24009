@@ -1,0 +1,58 @@
+[
+  {
+    "id": "analisis-data",
+    "title": "Analisis Data & Visualisasi Informasi",
+    "icon": "bi-bar-chart-line",
+    "description": "Pengolahan data terstruktur menjadi insight dan dashboard visual yang mudah dipahami.",
+    "price": 750000,
+    "unit": "per proyek",
+    "duration": "2 pekan",
+    "features": [
+      "Pembersihan & eksplorasi data",
+      "Dashboard visualisasi interaktif",
+      "Ringkasan temuan dan rekomendasi"
+    ]
+  },
+  {
+    "id": "bpmn",
+    "title": "Pemodelan Proses Bisnis (BPMN & DFD)",
+    "icon": "bi-diagram-3",
+    "description": "Pemetaan alur proses bisnis dan alur data sistem secara jelas dan terdokumentasi.",
+    "price": 600000,
+    "unit": "per proyek",
+    "duration": "2 pekan",
+    "features": [
+      "Diagram BPMN 2.0",
+      "DFD Level 0 sampai 2",
+      "Dokumentasi alur proses"
+    ]
+  },
+  {
+    "id": "uiux",
+    "title": "Perancangan UI/UX & Prototyping Figma",
+    "icon": "bi-bounding-box-circles",
+    "description": "Perancangan antarmuka yang ramah pengguna, dari wireframe hingga prototipe interaktif.",
+    "price": 900000,
+    "unit": "per proyek",
+    "duration": "3 pekan",
+    "features": [
+      "Wireframe & user flow",
+      "Prototipe interaktif di Figma",
+      "Panduan dasar design system"
+    ]
+  },
+  {
+    "id": "frontend",
+    "title": "Rekayasa Web Frontend Modern",
+    "icon": "bi-code-slash",
+    "description": "Pembuatan halaman web responsif dengan HTML5, Bootstrap 5, dan JavaScript modern.",
+    "price": 1200000,
+    "unit": "per proyek",
+    "duration": "4 pekan",
+    "features": [
+      "Layout responsif Bootstrap 5",
+      "Konten dinamis via JavaScript",
+      "Deploy ke GitHub Pages"
+    ]
+  }
+]
