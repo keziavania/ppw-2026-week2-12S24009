@@ -1,6 +1,10 @@
 const App = {
+  STORAGE_KEY: 'ppw_service_orders',
+
   state: {
     projects: [],
+    services: [],
+    orders: [],
     activeCategory: 'Semua',
   },
 
@@ -17,6 +21,13 @@ const App = {
       modalTitle: document.getElementById('projectModalTitle'),
       modalBody: document.getElementById('projectModalBody'),
       modalLink: document.getElementById('projectModalLink'),
+      form: document.getElementById('serviceForm'),
+      serviceSelect: document.getElementById('kategoriLayanan'),
+      orderBadge: document.getElementById('orderBadge'),
+      orderHistory: document.getElementById('orderHistory'),
+      toast: document.getElementById('appToast'),
+      toastTitle: document.getElementById('appToastTitle'),
+      toastMessage: document.getElementById('appToastMessage'),
     };
 
     this.els.filters.addEventListener('click', (e) => {
@@ -33,7 +44,13 @@ const App = {
       this.openProjectModal(btn.dataset.projectId);
     });
 
+    this.els.form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+
+    this.state.orders = this.loadOrders();
+    this.renderOrders();
+
     this.loadProjects();
+    this.loadServices();
   },
 
   escapeHTML(value) {
@@ -130,6 +147,106 @@ const App = {
     if (isRealLink) this.els.modalLink.setAttribute('href', p.link);
 
     bootstrap.Modal.getOrCreateInstance(this.els.modal).show();
+  },
+
+  async loadServices() {
+    try {
+      this.state.services = await ApiService.getServices();
+      this.state.services.forEach((s) => {
+        const option = document.createElement('option');
+        option.value = s.id;
+        option.textContent = `${s.title} (Rp ${s.price.toLocaleString('id-ID')} ${s.unit})`;
+        this.els.serviceSelect.appendChild(option);
+      });
+      this.renderOrders();
+    } catch (err) {
+      this.els.serviceSelect.options[0].textContent = 'Daftar layanan gagal dimuat';
+    }
+  },
+
+  serviceTitle(serviceId) {
+    const found = this.state.services.find((s) => s.id === serviceId);
+    return found ? found.title : serviceId;
+  },
+
+  async handleFormSubmit(event) {
+    event.preventDefault();
+    const form = this.els.form;
+    if (!form.checkValidity()) return;
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+    payload.dikirimPada = new Date().toISOString();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Mengirim...';
+
+    try {
+      const result = await ApiService.submitServiceOrder(payload);
+      this.saveOrder({ ...payload, orderId: result.id });
+      this.showToast('Sukses!', 'Permintaan layanan berhasil diproses oleh API.', 'success');
+      form.reset();
+      form.classList.remove('was-validated');
+    } catch (err) {
+      this.showToast('Gagal!', 'Permintaan tidak dapat dikirim. Coba lagi beberapa saat.', 'danger');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalHTML;
+    }
+  },
+
+  loadOrders() {
+    try {
+      const raw = localStorage.getItem(this.STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (err) {
+      console.error('[Storage Error]:', err);
+      return [];
+    }
+  },
+
+  saveOrder(order) {
+    this.state.orders.unshift(order);
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.state.orders));
+    } catch (err) {
+      console.error('[Storage Error]:', err);
+    }
+    this.renderOrders();
+  },
+
+  renderOrders() {
+    const { orders } = this.state;
+    this.els.orderBadge.textContent = orders.length;
+
+    if (orders.length === 0) {
+      this.els.orderHistory.innerHTML = '<li>Belum ada pemesanan.</li>';
+      return;
+    }
+
+    const e = (v) => this.escapeHTML(v);
+    this.els.orderHistory.innerHTML = orders
+      .slice(0, 5)
+      .map((o) => {
+        const waktu = new Date(o.dikirimPada).toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
+        return `
+          <li class="border-bottom pb-2 mb-2">
+            <span class="d-block fw-semibold text-dark">${e(this.serviceTitle(o.kategori))}</span>
+            <span class="d-block">${e(o.nama)} &bull; ${e(o.estimasi)} pekan</span>
+            <span class="d-block text-muted">${e(waktu)}</span>
+          </li>`;
+      })
+      .join('');
+  },
+
+  showToast(title, message, type = 'success') {
+    const { toast, toastTitle, toastMessage } = this.els;
+    toast.classList.remove('text-bg-success', 'text-bg-danger');
+    toast.classList.add(`text-bg-${type}`);
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+    bootstrap.Toast.getOrCreateInstance(toast, { delay: 4000 }).show();
   },
 };
 

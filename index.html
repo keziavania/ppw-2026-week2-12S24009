@@ -358,19 +358,19 @@
               <h2 class="fw-bold mb-1">Formulir Pengajuan Proyek &amp; Konsultasi</h2>
               <p class="text-muted small mb-4">Isi rincian di bawah ini untuk kolaborasi proyek analisis atau bimbingan teknis.</p>
 
-              <form class="needs-validation" novalidate action="#" method="POST">
+              <form id="serviceForm" class="needs-validation" novalidate>
                 <fieldset class="border rounded-4 p-4 mb-4">
                   <legend class="float-none w-auto px-2 fs-6 fw-bold text-pink">1. Identitas Pemohon / Klien</legend>
                   
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-3" id="namaKlien" placeholder="Kezia Vania" required>
+                    <input type="text" class="form-control rounded-3" id="namaKlien" name="nama" placeholder="Kezia Vania" required>
                     <label for="namaKlien"><i class="bi bi-person me-1"></i> Nama Lengkap *</label>
                     <div class="valid-feedback">Nama lengkap telah diisi.</div>
                     <div class="invalid-feedback">Nama lengkap wajib disertakan.</div>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-3" id="emailKlien" placeholder="nama@domain.com" required>
+                    <input type="email" class="form-control rounded-3" id="emailKlien" name="email" placeholder="nama@domain.com" required>
                     <label for="emailKlien"><i class="bi bi-envelope me-1"></i> Alamat Email Resmi *</label>
                     <div class="valid-feedback">Format email valid.</div>
                     <div class="invalid-feedback">Alamat email valid wajib disertakan.</div>
@@ -378,19 +378,19 @@
 
                   <div class="row g-3">
                     <div class="col-md-7">
-                      <label class="form-label small fw-semibold">Nomor WhatsApp *</label>
+                      <label class="form-label small fw-semibold" for="whatsappKlien">Nomor WhatsApp *</label>
                       <div class="input-group">
                         <span class="input-group-text bg-light"><i class="bi bi-whatsapp text-success"></i></span>
-                        <input type="tel" class="form-control rounded-end-3" placeholder="081234567890" pattern="[0-9]{10,14}" required>
+                        <input type="tel" class="form-control rounded-end-3" id="whatsappKlien" name="whatsapp" placeholder="081234567890" pattern="[0-9]{10,14}" required>
                         <div class="invalid-feedback">Nomor WhatsApp aktif wajib diisi.</div>
                       </div>
                     </div>
 
                     <div class="col-md-5">
-                      <label class="form-label small fw-semibold">Estimasi (Pekan) *</label>
+                      <label class="form-label small fw-semibold" for="estimasiPekan">Estimasi (Pekan) *</label>
                       <div class="input-group">
                         <span class="input-group-text bg-light"><i class="bi bi-calendar3"></i></span>
-                        <input type="number" class="form-control rounded-end-3" min="1" max="24" value="2" required>
+                        <input type="number" class="form-control rounded-end-3" id="estimasiPekan" name="estimasi" min="1" max="24" value="2" required>
                       </div>
                     </div>
                   </div>
@@ -400,25 +400,21 @@
                   <legend class="float-none w-auto px-2 fs-6 fw-bold text-pink">2. Rincian Layanan &amp; Kebutuhan</legend>
 
                   <div class="form-floating mb-3">
-                    <select class="form-select rounded-3" id="kategoriLayanan" required>
+                    <select class="form-select rounded-3" id="kategoriLayanan" name="kategori" required>
                       <option value="" disabled selected>Pilih salah satu layanan</option>
-                      <option value="analisis-data">Analisis Data &amp; Visualisasi Informasi</option>
-                      <option value="bpmn">Pemodelan Proses Bisnis (BPMN &amp; DFD)</option>
-                      <option value="uiux">Perancangan UI/UX &amp; Prototyping Figma</option>
-                      <option value="frontend">Rekayasa Web Frontend Modern</option>
                     </select>
                     <label for="kategoriLayanan"><i class="bi bi-layers me-1"></i> Kategori Layanan *</label>
                     <div class="invalid-feedback">Pilih salah satu kategori layanan.</div>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <textarea class="form-control rounded-3" placeholder="Deskripsi proyek" id="deskripsiProyek" style="height: 120px" required></textarea>
+                    <textarea class="form-control rounded-3" placeholder="Deskripsi proyek" id="deskripsiProyek" name="deskripsi" style="height: 120px" required></textarea>
                     <label for="deskripsiProyek"><i class="bi bi-pencil-square me-1"></i> Ruang Lingkup &amp; Deskripsi Kebutuhan *</label>
                     <div class="invalid-feedback">Rincian kebutuhan sistem wajib dijelaskan.</div>
                   </div>
 
                   <div class="form-check my-3">
-                    <input class="form-check-input" type="checkbox" id="checkTerms" required>
+                    <input class="form-check-input" type="checkbox" id="checkTerms" name="setuju" required>
                     <label class="form-check-label small text-muted" for="checkTerms">
                       Saya menyetujui syarat &amp; ketentuan konsultasi teknis serta kerahasiaan data proyek. *
                     </label>
@@ -449,7 +445,26 @@
                 <span>Siap Melayani Konsultasi</span>
               </div>
             </div>
+
+            <div class="custom-card p-4">
+              <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                <h4 class="fs-6 fw-bold text-pink mb-0">Riwayat Pemesanan</h4>
+                <span id="orderBadge" class="badge bg-pink-soft text-pink rounded-pill">0</span>
+              </div>
+              <ul id="orderHistory" class="list-unstyled small text-muted mb-0">
+                <li>Belum ada pemesanan.</li>
+              </ul>
+            </div>
           </aside>
+        </div>
+      </div>
+
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="appToast" class="toast align-items-center border-0" role="status" aria-live="polite" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body"><strong id="appToastTitle"></strong> <span id="appToastMessage"></span></div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Tutup"></button>
+          </div>
         </div>
       </div>
     </section>
