@@ -6,6 +6,8 @@ const App = {
     services: [],
     orders: [],
     activeCategory: 'Semua',
+    searchQuery: '',
+    projectsLoaded: false,
   },
 
   els: {},
@@ -19,6 +21,8 @@ const App = {
       loading: byId('projectLoading'),
       error: byId('projectError'),
       empty: byId('projectEmpty'),
+      search: byId('projectSearch'),
+      reset: byId('projectReset'),
       modal: byId('universalProjectModal'),
       modalTitle: byId('projectModalTitle'),
       modalBody: byId('projectModalBody'),
@@ -49,6 +53,19 @@ const App = {
       const btn = e.target.closest('button[data-category]');
       if (!btn) return;
       this.state.activeCategory = btn.dataset.category;
+      this.renderFilters();
+      this.renderProjects();
+    });
+
+    this.els.search.addEventListener('input', (e) => {
+      this.state.searchQuery = e.target.value.trim().toLowerCase();
+      if (this.state.projectsLoaded) this.renderProjects();
+    });
+
+    this.els.reset.addEventListener('click', () => {
+      this.state.searchQuery = '';
+      this.state.activeCategory = 'Semua';
+      this.els.search.value = '';
       this.renderFilters();
       this.renderProjects();
     });
@@ -198,6 +215,7 @@ const App = {
     this.setUIState('loading');
     try {
       this.state.projects = await ApiService.getProjects();
+      this.state.projectsLoaded = true;
       this.renderFilters();
       this.renderProjects();
     } catch (err) {
@@ -216,10 +234,13 @@ const App = {
   },
 
   renderProjects() {
-    const { projects, activeCategory } = this.state;
-    const list = activeCategory === 'Semua'
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+    const { projects, activeCategory, searchQuery } = this.state;
+    const list = projects.filter((p) => {
+      const matchCategory = activeCategory === 'Semua' || p.category === activeCategory;
+      const haystack = [p.title, p.summary, p.category, ...p.tags].join(' ').toLowerCase();
+      const matchSearch = haystack.includes(searchQuery);
+      return matchCategory && matchSearch;
+    });
 
     if (list.length === 0) {
       this.els.grid.innerHTML = '';
