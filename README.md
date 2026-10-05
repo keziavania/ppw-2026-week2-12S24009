@@ -73,23 +73,24 @@ Catatan: validasi form bawaan Bootstrap (class `was-validated`) masih berupa skr
 
 ### Metodologi
 
-Pengukuran dilakukan pada URL live GitHub Pages menggunakan Google Chrome di jendela Incognito, tab Network, tanpa throttling. **Cold load** dilakukan dengan opsi *Disable cache* aktif dan hard reload (`Ctrl + Shift + R`). **Warm load** dilakukan dengan *Disable cache* dinonaktifkan, setelah cache terisi oleh kunjungan sebelumnya, lalu reload biasa (`F5`).
+Pengukuran dilakukan pada URL live GitHub Pages menggunakan Google Chrome di jendela Incognito, tab Network, tanpa throttling. **Cold load** dilakukan dengan opsi *Disable cache* aktif dan hard reload (`Ctrl + Shift + R`). **Warm load** dilakukan dengan *Disable cache* dinonaktifkan, setelah cache terisi oleh kunjungan sebelumnya, lalu reload biasa (`F5`). TTFB diambil dari tab Timing pada baris `index.html`, yaitu nilai *Waiting for server response*.
 
 ### Hasil Pengukuran
 
 | Metrik | Cold Load (tanpa cache) | Warm Load (dengan cache) |
 | :--- | :--- | :--- |
 | Jumlah request | 13 | 13 |
-| Data ditransfer | 370 kB | 236 B |
+| Data ditransfer | 368 kB | 935 B |
 | Ukuran resource | 728 kB | 728 kB |
-| TTFB `index.html` | [ISI] ms | [ISI] ms |
-| DOMContentLoaded | 2,18 s | 3,18 s |
-| Load | 2,54 s | 3,26 s |
-| Finish | 2,53 s | 3,19 s |
+| TTFB `index.html` | 144,20 ms | 324,32 ms |
+| Total waktu `index.html` | 146,71 ms | 408,78 ms |
+| DOMContentLoaded | 345 ms | 898 ms |
+| Load | 454 ms | 899 ms |
+| Finish | 482 ms | 1,33 s |
 | Status `index.html` | 200 | 304 (Not Modified) |
-| Status `projects.json` | 200 | 200 (disk cache) |
+| Status `projects.json` | 200 | 304 (Not Modified) |
 
-Catatan: angka waktu sangat dipengaruhi kondisi jaringan saat pengukuran. Pada rekaman cold load lain di sesi yang sama, DOMContentLoaded tercatat 538 ms dan Load 695 ms dengan ukuran berkas yang identik. Tabel di atas memakai rekaman yang sama dengan screenshot pada bagian Bukti Visual agar dapat dicocokkan.
+Catatan: waktu pemuatan dipengaruhi kondisi jaringan saat pengukuran. Pada rekaman lain di sesi yang sama, nilai waktu berbeda cukup jauh dengan ukuran berkas yang sama, sehingga volume data adalah indikator yang lebih stabil daripada waktu. Setiap kolom pada tabel di atas berasal dari satu rekaman yang sama dengan screenshot pada bagian Bukti Visual.
 
 ### Bukti Visual
 
@@ -97,9 +98,17 @@ Catatan: angka waktu sangat dipengaruhi kondisi jaringan saat pengukuran. Pada r
 
 ![Waterfall cold load](docs/waterfall-cold.png)
 
+**Rincian Timing `index.html` (Cold Load)**
+
+![Timing cold load](docs/timing-cold.png)
+
 **Waterfall Warm Load**
 
 ![Waterfall warm load](docs/waterfall-warm.png)
+
+**Rincian Timing `index.html` (Warm Load)**
+
+![Timing warm load](docs/timing-warm.png)
 
 **Header Cache dan Status 304**
 
@@ -107,15 +116,15 @@ Catatan: angka waktu sangat dipengaruhi kondisi jaringan saat pengukuran. Pada r
 
 ### Analisis
 
-**Urutan pemuatan (pola CSR).** Waterfall cold load menunjukkan urutan khas Client-Side Rendering. Browser mengunduh `index.html` (5,1 kB) terlebih dahulu, lalu menemukan dan mengunduh stylesheet (`bootstrap.min.css`, `bootstrap-icons.min.css`, `custom-style.css`), gambar profil, dan skrip (`bootstrap.bundle.min.js`, `api-service.js`, `app.js`). Tiga berkas data (`profile.json`, `projects.json`, `services.json`) baru diminta setelah skrip aplikasi dieksekusi, ditandai initiator `api-service.js:10`. Ketiganya dimulai bersamaan (paralel) dan selesai dalam waktu hampir sama (sekitar 284 ms), karena `loadProjects()` dan `loadServices()` dipanggil tanpa saling menunggu. Konsekuensinya, konten dinamis seperti kartu proyek dan dropdown layanan baru dapat dirender setelah rantai HTML, skrip, lalu JSON selesai. Itulah alasan aplikasi menampilkan spinner sebagai UI state sementara.
+**Urutan pemuatan (pola CSR).** Waterfall cold load menunjukkan urutan khas Client-Side Rendering. Browser mengunduh `index.html` (5,0 kB) terlebih dahulu, lalu menemukan dan mengunduh stylesheet (`bootstrap.min.css`, `bootstrap-icons.min.css`, `custom-style.css`), gambar profil, dan skrip (`bootstrap.bundle.min.js`, `api-service.js`, `app.js`). Tiga berkas data (`profile.json`, `projects.json`, `services.json`) baru diminta setelah skrip aplikasi dieksekusi, ditandai initiator `api-service.js:10`. Ketiganya dimulai bersamaan (paralel), karena `loadProjects()` dan `loadServices()` dipanggil tanpa saling menunggu. Konsekuensinya, konten dinamis seperti kartu proyek dan dropdown layanan baru dapat dirender setelah rantai HTML, skrip, lalu JSON selesai. Itulah alasan aplikasi menampilkan spinner sebagai UI state sementara.
 
-**Sumber beban terbesar.** Pada cold load, `profile.jpg` (149 kB) menjadi request terlama (1,85 s) dan, bersama font `bootstrap-icons.woff2` (131 kB), menyumbang porsi terbesar data yang ditransfer. Optimasi yang dapat dilakukan adalah mengompres gambar profil dan memuat font ikon secara selektif. Selama pengukuran juga ditemukan request ganda untuk `profile.jpg` karena `app.js` menyetel ulang atribut `src` gambar yang sudah dimuat oleh HTML. Hal ini diperbaiki dengan pengecekan sebelum penetapan `src`, sehingga kini gambar hanya diunduh satu kali.
+**Sumber beban terbesar.** Pada cold load, `profile.jpg` (149 kB) dan font `bootstrap-icons.woff2` (131 kB) menyumbang porsi terbesar data yang ditransfer. Optimasi yang dapat dilakukan adalah mengompres gambar profil dan memuat font ikon secara selektif. Selama pengukuran juga ditemukan request ganda untuk `profile.jpg` karena `app.js` menyetel ulang atribut `src` gambar yang sudah dimuat oleh HTML. Hal ini diperbaiki dengan pengecekan sebelum penetapan `src`, sehingga kini gambar hanya diunduh satu kali.
 
-**Mekanisme cache dan status 304.** GitHub Pages mengirim header `Cache-Control: max-age=600`, `ETag`, dan `Last-Modified` pada berkas statis. Nilai `max-age=600` berarti browser boleh memakai salinan lokal selama 10 menit tanpa menghubungi server. Hal ini terlihat pada warm load: seluruh CSS, JS, gambar, font, dan JSON dilayani dari *disk cache* dengan waktu 1 sampai 3 ms. Reload biasa (`F5`) tetap memvalidasi dokumen utama. Browser mengirim `If-None-Match` berisi nilai `ETag`, dan server membalas **304 Not Modified** tanpa body, sehingga `index.html` hanya mentransfer header (0,2 kB). Akibatnya, total data yang ditransfer turun dari 370 kB pada cold load menjadi 236 B pada warm load, penghematan lebih dari 99%.
+**Mekanisme cache dan status 304.** GitHub Pages mengirim header `Cache-Control: max-age=600`, `ETag`, dan `Last-Modified`. Reload biasa (`F5`) menambahkan `Cache-Control: max-age=0` pada request dokumen utama, sehingga browser memvalidasi ulang `index.html` dengan header `If-None-Match` bernilai `W/"6ac37c27-4524"`, sama persis dengan `ETag` dari server. Karena berkas tidak berubah, server membalas **304 Not Modified** tanpa body. Pada rekaman warm load, validasi 304 juga terjadi pada `custom-style.css`, `profile.jpg`, `api-service.js`, `app.js`, dan ketiga berkas JSON, sedangkan `bootstrap.min.css`, `bootstrap-icons.min.css`, `bootstrap.bundle.min.js`, dan font dilayani dari memory cache. Akibatnya, data yang ditransfer turun dari 368 kB menjadi 935 B, penghematan lebih dari 99%.
 
-**Mengapa warm load tidak lebih cepat.** Meskipun datanya hampir nol, waktu Load warm load (3,26 s) lebih lambat daripada cold load (2,54 s). Waterfall menunjukkan bahwa `index.html` memakan 3,15 s, hampir seluruhnya berupa fase menunggu respons server, sedangkan semua berkas lain hanya 1 sampai 3 ms dari cache. Dengan kata lain, hambatan bukan pada pengunduhan data, melainkan pada satu kali round trip validasi ke server yang terjadi saat koneksi sedang kurang stabil. Karena itu penghematan cache terlihat jelas pada volume data, tetapi tidak selalu pada waktu total, sebab waktu tersebut didominasi latensi jaringan. Pengukuran ulang pada kondisi jaringan stabil diperkirakan menunjukkan waktu warm load yang lebih rendah daripada cold load.
+**Mengapa warm load tidak lebih cepat.** Meskipun datanya hampir nol, waktu Load warm load (899 ms) lebih lambat daripada cold load (454 ms). Penyebabnya terlihat di waterfall: setiap berkas yang divalidasi 304 tetap membutuhkan satu kali round trip ke server (sekitar 300 sampai 480 ms per berkas pada rekaman ini), dan pada `index.html` browser juga membuka koneksi HTTPS baru (Initial connection 82,32 ms, termasuk SSL 58,15 ms). Dengan demikian cache menghemat volume data secara signifikan, tetapi tidak otomatis menurunkan waktu total, karena validasi tetap bergantung pada latensi jaringan. Hasil ini hanya berasal dari satu pengukuran per kondisi sehingga tidak boleh dibaca sebagai perbandingan yang pasti.
 
-**TTFB.** [ISI setelah diukur: sebutkan nilai TTFB `index.html` (tab Timing, "Waiting for server response") pada cold dan warm load, lalu jelaskan bahwa hosting statis di edge/CDN GitHub Pages hanya menyajikan berkas yang sudah jadi tanpa komputasi di sisi server, sehingga beban server nyaris nol.]
+**TTFB.** TTFB `index.html` tercatat 144,20 ms pada cold load dan 324,32 ms pada warm load. Pada kedua kasus fase *Waiting for server response* mendominasi total waktu request (144,20 dari 146,71 ms pada cold load, dan 324,32 dari 408,78 ms pada warm load). Header respons menunjukkan berkas dilayani dari CDN GitHub Pages (`Via: 1.1 varnish`, `X-Cache: HIT`, `X-Served-By: cache-sin-...`), sehingga server hanya menyajikan berkas yang sudah jadi tanpa komputasi dinamis. Karena itu TTFB pada hosting statis terutama mencerminkan latensi jaringan menuju server edge, bukan waktu pemrosesan di sisi server. Selisih TTFB antara cold dan warm sebaiknya dibaca sebagai variasi kondisi jaringan, bukan efek cache.
 
 ---
 
@@ -134,7 +143,9 @@ ppw-2026-week2-12S24009/
 │   └── services.json
 ├── docs/
 │   ├── waterfall-cold.png
+│   ├── timing-cold.png
 │   ├── waterfall-warm.png
+│   ├── timing-warm.png
 │   └── header-304.png
 └── js/
     ├── api-service.js
