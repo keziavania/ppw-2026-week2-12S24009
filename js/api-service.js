@@ -1,7 +1,7 @@
 const ApiService = (() => {
   const BASE_PATH = './data';
   const ORDER_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts';
-  const SIMULATED_LATENCY_MS = 600;
+  const SIMULATED_LATENCY_MS = 0;
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
