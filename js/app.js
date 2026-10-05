@@ -122,7 +122,7 @@ const App = {
     fillText(els.heroMajor, p.academic.major);
     fillText(els.aboutText, p.about);
 
-    els.heroPhoto.src = p.photo;
+    if (!els.heroPhoto.src.endsWith(p.photo)) els.heroPhoto.src = p.photo;
     els.heroPhoto.alt = `Foto Profil ${p.name}`;
 
     els.heroStats.innerHTML = p.stats
