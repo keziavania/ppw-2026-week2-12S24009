@@ -40,18 +40,16 @@
       <div class="container py-lg-4">
         <div class="row align-items-center g-5">
           <div class="col-lg-7 text-center text-lg-start">
-            <span class="hero-tag d-inline-block fw-bold mb-2">PORTOFOLIO PROFESIONAL</span>
-            <h1 class="hero-title mb-2">Kezia Vania Pasaribu</h1>
-            <h2 class="hero-subtitle fw-semibold mb-3">Business Analyst &amp; Data Analyst</h2>
-            <p class="hero-desc text-muted mb-4">
-              Mahasiswa semester 5 dengan program studi sistem informasi di institut teknologi del.
-            </p>
+            <span class="hero-tag d-inline-block fw-bold mb-2" id="heroTag"></span>
+            <h1 class="hero-title mb-2 placeholder-glow" id="heroName"><span class="placeholder col-8"></span></h1>
+            <h2 class="hero-subtitle fw-semibold mb-3 placeholder-glow" id="heroHeadline"><span class="placeholder col-6"></span></h2>
+            <p class="hero-desc text-muted mb-4 placeholder-glow" id="heroBio"><span class="placeholder col-10"></span></p>
 
             <div class="edu-badge-card d-inline-flex align-items-center gap-3 p-2 px-3 rounded-4 mb-4">
               <i class="bi bi-mortarboard-fill fs-3 text-pink"></i>
               <div class="text-start">
-                <span class="d-block small text-muted">Institut Teknologi Del</span>
-                <strong class="edu-major">S1 Sistem Informasi</strong>
+                <span class="d-block small text-muted" id="heroUniversity"></span>
+                <strong class="edu-major" id="heroMajor"></strong>
               </div>
             </div>
 
@@ -59,12 +57,14 @@
               <a href="#projects" class="btn btn-primary-pill">Lihat Proyek</a>
               <a href="#services" class="btn btn-secondary-pill">Konsultasi Gratis</a>
             </div>
+
+            <div id="heroStats" class="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start mt-4"></div>
           </div>
 
           <div class="col-lg-5 d-flex justify-content-center">
             <div class="avatar-ring-outer">
               <div class="avatar-ring-inner">
-                <img src="profile.jpg" alt="Foto Profil Kezia Vania Pasaribu" class="avatar-image">
+                <img id="heroPhoto" src="profile.jpg" alt="Foto Profil" class="avatar-image">
               </div>
             </div>
           </div>
@@ -84,8 +84,10 @@
           <div class="col-lg-5">
             <article class="custom-card p-4 p-md-5 h-100">
               <h3 class="card-headline mb-3">Tentang Saya</h3>
-              <p class="card-paragraph text-muted mb-0">
-                Mahasiswa tingkat 3 di semester 5 yang berfokus pada pengembangan web dan desain antarmuka. Tertarik dalam pemodelan alur proses bisnis, analisis data terstruktur, serta perancangan sistem informasi yang fungsional, inklusif, dan ramah pengguna berstandar aksesibilitas tinggi.
+              <p class="card-paragraph text-muted mb-0 placeholder-glow" id="aboutText">
+                <span class="placeholder col-12"></span>
+                <span class="placeholder col-10"></span>
+                <span class="placeholder col-8"></span>
               </p>
             </article>
           </div>
@@ -93,32 +95,7 @@
           <div class="col-lg-7">
             <article class="custom-card p-4 p-md-5 h-100">
               <h3 class="card-headline mb-4">Data Akademik</h3>
-              <dl class="academic-dl mb-0">
-                <div class="dl-row py-2 border-bottom d-flex flex-column flex-sm-row justify-content-between">
-                  <dt class="text-muted fw-normal">Universitas</dt>
-                  <dd class="fw-semibold mb-0">Institut Teknologi Del</dd>
-                </div>
-                <div class="dl-row py-2 border-bottom d-flex flex-column flex-sm-row justify-content-between">
-                  <dt class="text-muted fw-normal">Fakultas</dt>
-                  <dd class="fw-semibold mb-0">Fakultas Informatika dan Teknik Elektro</dd>
-                </div>
-                <div class="dl-row py-2 border-bottom d-flex flex-column flex-sm-row justify-content-between">
-                  <dt class="text-muted fw-normal">Program Studi</dt>
-                  <dd class="fw-semibold mb-0">S1 Sistem Informasi</dd>
-                </div>
-                <div class="dl-row py-2 border-bottom d-flex flex-column flex-sm-row justify-content-between">
-                  <dt class="text-muted fw-normal">Tahun Aktif</dt>
-                  <dd class="fw-semibold mb-0">2024 &ndash; Sekarang</dd>
-                </div>
-                <div class="dl-row py-2 border-bottom d-flex flex-column flex-sm-row justify-content-between">
-                  <dt class="text-muted fw-normal">Email</dt>
-                  <dd class="fw-semibold mb-0"><a href="mailto:kejiavania@gmail.com" class="academic-link">kejiavania@gmail.com</a></dd>
-                </div>
-                <div class="dl-row py-2 d-flex flex-column flex-sm-row justify-content-between">
-                  <dt class="text-muted fw-normal">Domisili</dt>
-                  <dd class="fw-semibold mb-0">Medan, Sumatera Utara</dd>
-                </div>
-              </dl>
+              <dl class="academic-dl mb-0" id="academicList"></dl>
             </article>
           </div>
         </div>
@@ -183,167 +160,15 @@
           </nav>
 
           <div class="tab-content content-keahlian">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <h4 class="card-group-title">Pemrograman</h4>
-                  <ul class="pink-bullet-list ps-0 mb-0">
-                    <li>Java (OOP Concepts)</li>
-                    <li>Bahasa C (System Calls)</li>
-                    <li>Python Programming</li>
-                    <li>Object-Oriented Design</li>
-                  </ul>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <h4 class="card-group-title">Analisis Sistem</h4>
-                  <ul class="pink-bullet-list ps-0 mb-0">
-                    <li>BPMN 2.0 Modeling</li>
-                    <li>Entity Relationship (ERD)</li>
-                    <li>Data Flow Diagram (DFD)</li>
-                    <li>Business Process Analysis</li>
-                  </ul>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <h4 class="card-group-title">UI/UX &amp; Desain</h4>
-                  <ul class="pink-bullet-list ps-0 mb-0">
-                    <li>Figma Prototyping</li>
-                    <li>Wireframing &amp; Sitemap</li>
-                    <li>User Flow Design</li>
-                    <li>Design System Basics</li>
-                  </ul>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <h4 class="card-group-title">Tools &amp; Lainnya</h4>
-                  <ul class="pink-bullet-list ps-0 mb-0">
-                    <li>Git &amp; GitHub Pages</li>
-                    <li>Bootstrap 5.3 &amp; Icons</li>
-                    <li>Database Relasional (SQL)</li>
-                    <li>Quality &amp; Web Standards</li>
-                  </ul>
-                </article>
-              </div>
-            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="skillsGrid"></div>
           </div>
 
           <div class="tab-content content-kepanitiaan">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h4 class="card-group-title mb-0">MPH Himpunan</h4>
-                    <span class="badge bg-light text-muted border">2025/2026</span>
-                  </div>
-                  <p class="role-text-highlight small fw-bold">Anggota Dewan</p>
-                  <p class="small text-muted flex-grow-1">
-                    Menjalankan fungsi legislasi, penyerapan aspirasi, pengawasan, dan evaluasi program kerja himpunan mahasiswa.
-                  </p>
-                  <div class="border-top pt-2 small text-muted">
-                    <i class="bi bi-pin-angle-fill text-pink me-1"></i> HIMASISFO IT Del
-                  </div>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h4 class="card-group-title mb-0">Kaderisasi 2025</h4>
-                    <span class="badge bg-light text-muted border">2025</span>
-                  </div>
-                  <p class="role-text-highlight small fw-bold">Sekretaris</p>
-                  <p class="small text-muted flex-grow-1">
-                    Mengelola administrasi persuratan, notulensi koordinasi, dan sinkronisasi logistik pembinaan mahasiswa angkatan.
-                  </p>
-                  <div class="border-top pt-2 small text-muted">
-                    <i class="bi bi-pin-angle-fill text-pink me-1"></i> Institut Teknologi Del
-                  </div>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h4 class="card-group-title mb-0">Inagurasi &amp; Wisuda</h4>
-                    <span class="badge bg-light text-muted border">2025/2026</span>
-                  </div>
-                  <p class="role-text-highlight small fw-bold">Divisi Bagian Umum</p>
-                  <p class="small text-muted flex-grow-1">
-                    Mengelola kebutuhan logistik, tata kelola fasilitas panggung, dan operasional teknis acara wisuda institusi.
-                  </p>
-                  <div class="border-top pt-2 small text-muted">
-                    <i class="bi bi-pin-angle-fill text-pink me-1"></i> Panitia Wisuda IT Del
-                  </div>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h4 class="card-group-title mb-0">Welcoming Party</h4>
-                    <span class="badge bg-light text-muted border">2025</span>
-                  </div>
-                  <p class="role-text-highlight small fw-bold">Divisi Dokumentasi</p>
-                  <p class="small text-muted flex-grow-1">
-                    Mengabadikan visual kegiatan, manajemen arsip fotografi/videografi, dan publikasi sambutan angkatan.
-                  </p>
-                  <div class="border-top pt-2 small text-muted">
-                    <i class="bi bi-pin-angle-fill text-pink me-1"></i> Welcoming Party IT Del
-                  </div>
-                </article>
-              </div>
-            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="committeesGrid"></div>
           </div>
 
           <div class="tab-content content-prestasi">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex align-items-center gap-2 mb-2">
-                    <i class="bi bi-award-fill fs-4 text-pink"></i>
-                    <h4 class="card-group-title mb-0">Best Research Essai AI</h4>
-                  </div>
-                  <p class="small text-muted flex-grow-1">
-                    Predikat karya riset esai terbaik tingkat nasional pada eksplorasi inovasi kecerdasan buatan.
-                  </p>
-                  <div class="border-top pt-2 d-flex justify-content-between align-items-center small">
-                    <span class="badge bg-pink-soft text-pink">Nasional</span>
-                    <span class="text-muted">Tahun 2025</span>
-                  </div>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex align-items-center gap-2 mb-2">
-                    <i class="bi bi-trophy-fill fs-4 text-pink"></i>
-                    <h4 class="card-group-title mb-0">Gemastik Smart City</h4>
-                  </div>
-                  <p class="small text-muted flex-grow-1">
-                    Peserta kompetisi nasional Pagelaran Mahasiswa TIK (Gemastik) pada kategori divisi Kota Cerdas.
-                  </p>
-                  <div class="border-top pt-2 d-flex justify-content-between align-items-center small">
-                    <span class="badge bg-pink-soft text-pink">Nasional</span>
-                    <span class="text-muted">Tahun 2025</span>
-                  </div>
-                </article>
-              </div>
-              <div class="col">
-                <article class="top-pink-card h-100">
-                  <div class="d-flex align-items-center gap-2 mb-2">
-                    <i class="bi bi-file-earmark-text-fill fs-4 text-pink"></i>
-                    <h4 class="card-group-title mb-0">PKM Gagasan Futuristik</h4>
-                  </div>
-                  <p class="small text-muted flex-grow-1">
-                    Penyusunan gagasan futuristik tertulis dalam skema Program Kreativitas Mahasiswa (PKM).
-                  </p>
-                  <div class="border-top pt-2 d-flex justify-content-between align-items-center small">
-                    <span class="badge bg-pink-soft text-pink">Nasional</span>
-                    <span class="text-muted">Tahun 2025</span>
-                  </div>
-                </article>
-              </div>
-            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="achievementsGrid"></div>
           </div>
         </div>
       </div>

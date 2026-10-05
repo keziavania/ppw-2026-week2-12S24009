@@ -11,23 +11,38 @@ const App = {
   els: {},
 
   init() {
+    const byId = (id) => document.getElementById(id);
+
     this.els = {
-      grid: document.getElementById('projectGrid'),
-      filters: document.getElementById('projectFilters'),
-      loading: document.getElementById('projectLoading'),
-      error: document.getElementById('projectError'),
-      empty: document.getElementById('projectEmpty'),
-      modal: document.getElementById('universalProjectModal'),
-      modalTitle: document.getElementById('projectModalTitle'),
-      modalBody: document.getElementById('projectModalBody'),
-      modalLink: document.getElementById('projectModalLink'),
-      form: document.getElementById('serviceForm'),
-      serviceSelect: document.getElementById('kategoriLayanan'),
-      orderBadge: document.getElementById('orderBadge'),
-      orderHistory: document.getElementById('orderHistory'),
-      toast: document.getElementById('appToast'),
-      toastTitle: document.getElementById('appToastTitle'),
-      toastMessage: document.getElementById('appToastMessage'),
+      grid: byId('projectGrid'),
+      filters: byId('projectFilters'),
+      loading: byId('projectLoading'),
+      error: byId('projectError'),
+      empty: byId('projectEmpty'),
+      modal: byId('universalProjectModal'),
+      modalTitle: byId('projectModalTitle'),
+      modalBody: byId('projectModalBody'),
+      modalLink: byId('projectModalLink'),
+      form: byId('serviceForm'),
+      serviceSelect: byId('kategoriLayanan'),
+      orderBadge: byId('orderBadge'),
+      orderHistory: byId('orderHistory'),
+      toast: byId('appToast'),
+      toastTitle: byId('appToastTitle'),
+      toastMessage: byId('appToastMessage'),
+      heroTag: byId('heroTag'),
+      heroName: byId('heroName'),
+      heroHeadline: byId('heroHeadline'),
+      heroBio: byId('heroBio'),
+      heroUniversity: byId('heroUniversity'),
+      heroMajor: byId('heroMajor'),
+      heroPhoto: byId('heroPhoto'),
+      heroStats: byId('heroStats'),
+      aboutText: byId('aboutText'),
+      academicList: byId('academicList'),
+      skillsGrid: byId('skillsGrid'),
+      committeesGrid: byId('committeesGrid'),
+      achievementsGrid: byId('achievementsGrid'),
     };
 
     this.els.filters.addEventListener('click', (e) => {
@@ -49,6 +64,7 @@ const App = {
     this.state.orders = this.loadOrders();
     this.renderOrders();
 
+    this.loadProfile();
     this.loadProjects();
     this.loadServices();
   },
@@ -56,6 +72,117 @@ const App = {
   escapeHTML(value) {
     const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
     return String(value).replace(/[&<>"']/g, (c) => map[c]);
+  },
+
+  async loadProfile() {
+    try {
+      const profile = await ApiService.getProfile();
+      this.renderProfile(profile);
+    } catch (err) {
+      ['heroName', 'heroHeadline', 'heroBio', 'aboutText'].forEach((key) => {
+        this.els[key].classList.remove('placeholder-glow');
+        this.els[key].textContent = '';
+      });
+      this.els.heroName.textContent = 'Data profil tidak tersedia';
+      this.showToast('Gagal!', 'Data profil tidak dapat dimuat. Muat ulang halaman.', 'danger');
+    }
+  },
+
+  renderProfile(p) {
+    const e = (v) => this.escapeHTML(v);
+    const { els } = this;
+
+    const fillText = (el, value) => {
+      el.textContent = value;
+      el.classList.remove('placeholder-glow');
+    };
+
+    fillText(els.heroTag, p.tagline);
+    fillText(els.heroName, p.name);
+    fillText(els.heroHeadline, p.headline);
+    fillText(els.heroBio, p.bio);
+    fillText(els.heroUniversity, p.academic.university);
+    fillText(els.heroMajor, p.academic.major);
+    fillText(els.aboutText, p.about);
+
+    els.heroPhoto.src = p.photo;
+    els.heroPhoto.alt = `Foto Profil ${p.name}`;
+
+    els.heroStats.innerHTML = p.stats
+      .map((s) => `
+        <div class="text-center text-lg-start">
+          <span class="d-block fs-3 fw-bold text-pink">${e(s.value)}</span>
+          <span class="small text-muted">${e(s.label)}</span>
+        </div>`)
+      .join('');
+
+    const rows = [
+      ['Universitas', p.academic.university],
+      ['Fakultas', p.academic.faculty],
+      ['Program Studi', p.academic.major],
+      ['Tahun Aktif', p.academic.activeYears],
+      ['Email', p.contact.email, true],
+      ['Domisili', p.contact.location],
+    ];
+    els.academicList.innerHTML = rows
+      .map(([label, value, isEmail], i) => {
+        const border = i < rows.length - 1 ? ' border-bottom' : '';
+        const val = isEmail
+          ? `<a href="mailto:${e(value)}" class="academic-link">${e(value)}</a>`
+          : e(value);
+        return `
+          <div class="dl-row py-2${border} d-flex flex-column flex-sm-row justify-content-between">
+            <dt class="text-muted fw-normal">${e(label)}</dt>
+            <dd class="fw-semibold mb-0">${val}</dd>
+          </div>`;
+      })
+      .join('');
+
+    els.skillsGrid.innerHTML = p.skills
+      .map((g) => `
+        <div class="col">
+          <article class="top-pink-card h-100">
+            <h4 class="card-group-title">${e(g.group)}</h4>
+            <ul class="pink-bullet-list ps-0 mb-0">
+              ${g.items.map((item) => `<li>${e(item)}</li>`).join('')}
+            </ul>
+          </article>
+        </div>`)
+      .join('');
+
+    els.committeesGrid.innerHTML = p.committees
+      .map((c) => `
+        <div class="col">
+          <article class="top-pink-card h-100">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h4 class="card-group-title mb-0">${e(c.title)}</h4>
+              <span class="badge bg-light text-muted border">${e(c.period)}</span>
+            </div>
+            <p class="role-text-highlight small fw-bold">${e(c.role)}</p>
+            <p class="small text-muted flex-grow-1">${e(c.description)}</p>
+            <div class="border-top pt-2 small text-muted">
+              <i class="bi bi-pin-angle-fill text-pink me-1"></i> ${e(c.organization)}
+            </div>
+          </article>
+        </div>`)
+      .join('');
+
+    els.achievementsGrid.innerHTML = p.achievements
+      .map((a) => `
+        <div class="col">
+          <article class="top-pink-card h-100">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi ${e(a.icon)} fs-4 text-pink"></i>
+              <h4 class="card-group-title mb-0">${e(a.title)}</h4>
+            </div>
+            <p class="small text-muted flex-grow-1">${e(a.description)}</p>
+            <div class="border-top pt-2 d-flex justify-content-between align-items-center small">
+              <span class="badge bg-pink-soft text-pink">${e(a.level)}</span>
+              <span class="text-muted">Tahun ${e(a.year)}</span>
+            </div>
+          </article>
+        </div>`)
+      .join('');
   },
 
   setUIState(state, message = '') {

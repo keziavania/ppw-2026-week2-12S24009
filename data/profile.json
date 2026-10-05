@@ -10,16 +10,87 @@
     "university": "Institut Teknologi Del",
     "faculty": "Fakultas Informatika dan Teknik Elektro",
     "major": "S1 Sistem Informasi",
-    "activeYears": "2024 – Sekarang"
+    "activeYears": "2024 - Sekarang"
   },
   "contact": {
     "email": "kejiavania@gmail.com",
     "location": "Medan, Sumatera Utara"
   },
   "stats": [
-    { "label": "Proyek Portofolio", "value": 4 },
+    { "label": "Proyek", "value": 4 },
     { "label": "Kepanitiaan", "value": 4 },
     { "label": "Prestasi", "value": 3 },
-    { "label": "Layanan Ditawarkan", "value": 4 }
+    { "label": "Layanan", "value": 4 }
+  ],
+  "skills": [
+    {
+      "group": "Pemrograman",
+      "items": ["Java (OOP Concepts)", "Bahasa C (System Calls)", "Python Programming", "Object-Oriented Design"]
+    },
+    {
+      "group": "Analisis Sistem",
+      "items": ["BPMN 2.0 Modeling", "Entity Relationship (ERD)", "Data Flow Diagram (DFD)", "Business Process Analysis"]
+    },
+    {
+      "group": "UI/UX & Desain",
+      "items": ["Figma Prototyping", "Wireframing & Sitemap", "User Flow Design", "Design System Basics"]
+    },
+    {
+      "group": "Tools & Lainnya",
+      "items": ["Git & GitHub Pages", "Bootstrap 5.3 & Icons", "Database Relasional (SQL)", "Quality & Web Standards"]
+    }
+  ],
+  "committees": [
+    {
+      "title": "MPH Himpunan",
+      "period": "2025/2026",
+      "role": "Anggota Dewan",
+      "description": "Menjalankan fungsi legislasi, penyerapan aspirasi, pengawasan, dan evaluasi program kerja himpunan mahasiswa.",
+      "organization": "HIMASISFO IT Del"
+    },
+    {
+      "title": "Kaderisasi 2025",
+      "period": "2025",
+      "role": "Sekretaris",
+      "description": "Mengelola administrasi persuratan, notulensi koordinasi, dan sinkronisasi logistik pembinaan mahasiswa angkatan.",
+      "organization": "Institut Teknologi Del"
+    },
+    {
+      "title": "Inagurasi & Wisuda",
+      "period": "2025/2026",
+      "role": "Divisi Bagian Umum",
+      "description": "Mengelola kebutuhan logistik, tata kelola fasilitas panggung, dan operasional teknis acara wisuda institusi.",
+      "organization": "Panitia Wisuda IT Del"
+    },
+    {
+      "title": "Welcoming Party",
+      "period": "2025",
+      "role": "Divisi Dokumentasi",
+      "description": "Mengabadikan visual kegiatan, manajemen arsip fotografi/videografi, dan publikasi sambutan angkatan.",
+      "organization": "Welcoming Party IT Del"
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Best Research Essai AI",
+      "icon": "bi-award-fill",
+      "description": "Predikat karya riset esai terbaik tingkat nasional pada eksplorasi inovasi kecerdasan buatan.",
+      "level": "Nasional",
+      "year": 2025
+    },
+    {
+      "title": "Gemastik Smart City",
+      "icon": "bi-trophy-fill",
+      "description": "Peserta kompetisi nasional Pagelaran Mahasiswa TIK (Gemastik) pada kategori divisi Kota Cerdas.",
+      "level": "Nasional",
+      "year": 2025
+    },
+    {
+      "title": "PKM Gagasan Futuristik",
+      "icon": "bi-file-earmark-text-fill",
+      "description": "Penyusunan gagasan futuristik tertulis dalam skema Program Kreativitas Mahasiswa (PKM).",
+      "level": "Nasional",
+      "year": 2025
+    }
   ]
 }
